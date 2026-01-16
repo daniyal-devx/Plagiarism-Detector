@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FileSearch, BookOpen, Play, Info } from 'lucide-react';
+import { FileSearch, BookOpen, Play, Info, Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DocumentUploader } from '@/components/DocumentUploader';
 import { ConfigurationPanel } from '@/components/ConfigurationPanel';
 import { ResultsDashboard } from '@/components/ResultsDashboard';
+import { DarkModeToggle } from '@/components/DarkModeToggle';
 
 interface DocumentInput {
   id: string;
@@ -82,11 +83,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
       {/* Header */}
-      <header className="border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 p-2">
+              <div className="rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 p-2 shadow-lg">
                 <FileSearch className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -98,14 +99,17 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowInfo(!showInfo)}
-            >
-              <Info className="mr-2 h-4 w-4" />
-              About
-            </Button>
+            <div className="flex items-center space-x-3">
+              <DarkModeToggle />
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <Info className="mr-2 h-4 w-4" />
+                About
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -255,10 +259,101 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-16 border-t bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6">
-          <p className="text-center text-sm text-muted-foreground">
-            Discrete Mathematics Project • Fingerprinting using Hashing and Set Theory
-          </p>
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* About Section */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <div className="rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 p-1.5">
+                  <FileSearch className="h-4 w-4 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg">Plagiarism Detector</h3>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Advanced plagiarism detection using discrete mathematics concepts: 
+                hashing, set theory, and Jaccard similarity.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                A Discrete Mathematics Project
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-3">
+              <h3 className="font-semibold">Quick Links</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    How It Works
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    Terms of Service
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Developer Info */}
+            <div className="space-y-3">
+              <h3 className="font-semibold">Developer</h3>
+              <div className="space-y-2">
+                <p className="text-sm font-medium">Daniyal Usman</p>
+                <p className="text-xs text-muted-foreground">
+                  Full-Stack Developer & DS Student
+                </p>
+                <div className="flex items-center space-x-3 pt-2">
+                  <a
+                    href="https://github.com/daniyal-devx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/daniyalusman-dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="mailto:daniyalusman.dev@gmail.com"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="Email"
+                  >
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-8 pt-6 border-t text-center">
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+              Made with <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by 
+              <span className="font-semibold text-foreground">Daniyal Usman</span>
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              © {new Date().getFullYear()} Plagiarism Detector. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
